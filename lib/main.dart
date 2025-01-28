@@ -4,7 +4,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'counter_controller.dart';
 import 'home_screen.dart';
 
-void main(){
+void main() {
   runApp(CounterApp());
 }
 
@@ -15,14 +15,7 @@ class CounterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: HomeScreen(),
-      initialBinding: ControllerBinder(),
-    );
-  }
-}
 
-class ControllerBinder extends Bindings{
-  @override
-  void dependencies() {
-    Get.put(CounterController());
+    );
   }
 }

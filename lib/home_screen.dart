@@ -1,7 +1,7 @@
-import 'package:get/get.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-import 'counter_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,32 +11,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //CounterController counterController = CounterController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Counter App'),
-        centerTitle: false,
-      ),
-      body: Center(child: GetBuilder<CounterController>(
-        builder: (CounterController) {
-          return Text(
-            '${CounterController.counter}',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
+      body: Stack(
+        children: [
+          RiveAnimation.network(
+              "https://cdn.dribbble.com/userupload/15805796/file/still-1cfc27fd0be634a121fcf57b4599a5b0.png?format=webp&resize=400x300&vertical=center"),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
+              child: SizedBox(),
             ),
-          );
-        },
-      )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: Get.find<CounterController>().increment,
-        child: Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
 }
-
-
